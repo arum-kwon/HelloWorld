@@ -16,5 +16,6 @@ public class BooleanExample {
 			else
 				System.out.println("false " + var1);			
 		}
+		System.out.println("End");
 	}
 }
