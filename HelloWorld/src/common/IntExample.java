@@ -3,8 +3,9 @@ package common;
 public class IntExample {
 	public static void main(String[] args) {
 			int var1 = 10;
-			int var2 = 010;
-			int var3 = 0x1;
+			byte var2 = 10;
+			int var3 = var1+var2;//0x10;
+			
 			
 			System.out.println("v1:" + var1 + ", v2:" + var2 + ", v3:"+ var3);
 			
