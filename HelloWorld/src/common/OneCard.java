@@ -1,5 +1,5 @@
 package common;
-
+//if, for, println, 기본적은 비교 조건 반복 연산 사용
 //결과 : 두 컴퓨터가 원카드 하는 것
 
 /* 카드 종류 : 49(1) 50(2) 51(3) 52(4) 53(5) 54(6) 55(7) 56(8) 57(9) 75(K) 74(J) 81(Q) X 35(#) 64(@)
@@ -53,7 +53,13 @@ package common;
  * 			(2-2) cec2p=cec3p; cec2n=cec3n; .. cec23p=cec24p; cec23n=cec24n; //cec(n-1) = cec(n) 다 대입  
  * 		//p2 위 복붙
  * 
- * 
+ * 구체적인 룰 추가
+ *	5. 가진 패가 없으면 승리 (191223)
+ *  
+ *
+ *
+ *
+ *
  * */
 
 public class OneCard {
@@ -143,7 +149,7 @@ public class OneCard {
 			 System.out.println(" error 2 : check card");
 			 
 		 }else {	//3.화면꾸리기
-			 
+			 int winner =0;
 			 for(int trun=1 ; trun<20 ; trun++) {
 
 				 System.out.println("-------------------------------------");
@@ -164,10 +170,13 @@ public class OneCard {
 				 			p2c24p+p2c24n);
 				 System.out.println("-------------------------------------");
 				 
-				 
+				 if(winner != 0) {
+					 System.out.println("p"+winner+"의 패가 없습니다. 승리");
+					 break;
+				 }
 				 
 				 //4. 턴 시작 (순서 p1 -> p2)
-				 //p1
+				 //p1 
 				 boolean p1IsSame = false; //패턴이 존재하면 true, p1NumSame에 넘버 저장 
 				 int p1NumSame = 0;
 				 if(p1c1p == cec1p || p1c1n == cec1n) { p1IsSame=true; p1NumSame=1;}
@@ -247,6 +256,20 @@ public class OneCard {
 					 }else if (p1NumSame == 23) { cec1p = p1c23p; cec1n = p1c23n; p1c23p = 0; p1c23n =0; 
 					 }else if (p1NumSame == 24) { cec1p = p1c24p; cec1n = p1c24n; p1c24p = 0; p1c24n =0; 
 					 }
+					 
+					 //카드를 제출하고, 카드가 없으면 종료함(1223)
+					 if(p1c1p==0 && p1c1n==0 && p1c2p==0 && p1c2n==0 && p1c3p==0 && p1c3n==0 &&
+						p1c4p==0 && p1c4n==0 && p1c5p==0 && p1c5n==0 && p1c6p==0 && p1c6n==0 && 
+						p1c7p==0 && p1c7n==0 && p1c8p==0 && p1c8n==0 && p1c9p==0 && p1c9n==0 && 
+						p1c10p==0 && p1c10n==0 && p1c11p==0 && p1c11n==0 && p1c12p==0 && p1c12n==0 && 
+						p1c13p==0 && p1c13n==0 && p1c14p==0 && p1c14p==0 && p1c15p==0 && p1c15n==0 && 
+						p1c16p==0 && p1c16n==0 && p1c17p==0 && p1c17p==0 && p1c18p==0 && p1c18n==0 && 
+						p1c19p==0 && p1c19n==0 && p1c20p==0 && p1c20p==0 && p1c21p==0 && p1c21n==0 && 
+						p1c22p==0 && p1c22n==0 && p1c23p==0 && p1c23n==0 && p1c24p==0 && p1c24n==0) {
+						 winner=1;
+						 continue;
+					 }
+					 
 				 }else { //(2)만약 p1의 모든 패중에 일치하는 p or n 이 없으면, 비어있는 p1c에 cec2삽입 , (n:2>23)cec(n) = cec(n+1) 다 대입
 					 if(p1c1p == 0 && p1c1n == 0) { p1c1p = cec2p; p1c1n = cec2n;
 					 } else if(p1c2p == 0 && p1c2n == 0) { p1c2p = cec2p; p1c2n = cec2n;
@@ -393,6 +416,19 @@ public class OneCard {
 					 }else if (p2NumSame == 22) { cec1p = p2c22p; cec1n = p2c22n; p2c22p = 0; p2c22n =0; 
 					 }else if (p2NumSame == 23) { cec1p = p2c23p; cec1n = p2c23n; p2c23p = 0; p2c23n =0; 
 					 }else if (p2NumSame == 24) { cec1p = p2c24p; cec1n = p2c24n; p2c24p = 0; p2c24n =0; 
+					 }
+
+					 //카드를 제출하고, 카드가 없으면 종료함(1223)
+					 if(p1c1p==0 && p1c1n==0 && p1c2p==0 && p1c2n==0 && p1c3p==0 && p1c3n==0 &&
+						p1c4p==0 && p1c4n==0 && p1c5p==0 && p1c5n==0 && p1c6p==0 && p1c6n==0 && 
+						p1c7p==0 && p1c7n==0 && p1c8p==0 && p1c8n==0 && p1c9p==0 && p1c9n==0 && 
+						p1c10p==0 && p1c10n==0 && p1c11p==0 && p1c11n==0 && p1c12p==0 && p1c12n==0 && 
+						p1c13p==0 && p1c13n==0 && p1c14p==0 && p1c14p==0 && p1c15p==0 && p1c15n==0 && 
+						p1c16p==0 && p1c16n==0 && p1c17p==0 && p1c17p==0 && p1c18p==0 && p1c18n==0 && 
+						p1c19p==0 && p1c19n==0 && p1c20p==0 && p1c20p==0 && p1c21p==0 && p1c21n==0 && 
+						p1c22p==0 && p1c22n==0 && p1c23p==0 && p1c23n==0 && p1c24p==0 && p1c24n==0) {
+						 winner=2;
+						 continue;
 					 }
 				 }else { //(2)만약 p2의 모든 패중에 일치하는 p or n 이 없으면, 비어있는 p2c에 cec2삽입 , (n:2>23)cec(n) = cec(n+1) 다 대입
 					 if(p2c1p == 0 && p2c1n == 0) { p2c1p = cec2p; p2c1n = cec2n;
