@@ -162,13 +162,28 @@ public class OneCard1 {
 	
 	
 	//4. 턴 시작 (순서 p1 -> p2)
-	//openCard와 같은 p|n이 존재하면, 
-	/*최적의 해를 구하는 방법
+	//openCard와 같은 p|n이 존재하면, 해당 값을 중앙에 보냄. 해당 card[1][p][n]=false, card[0][p][n]=true, openCardP/N = p/n
+	
+	
+	/*             존재하지 않으면, 중앙에게 배정된 패 중에 임의로 1개 선택해서 가져온다,  card[1][P][N]=true, card[0][P][N]=false
+	 * 		while(true) {
+			P=(int)Math.random();
+			N=(int)(Math.random()*12);
+			if(card[0][P][N]) {
+				card[1][P][N] = true;
+				card[0][P][N]=false;
+				break;
+			}
+		
+ *
+ * 최적의 해를 구하는 방법
 
 1. 현재 상황 파악
 2. 외부 상황 파악
-3. 외부 상황에서 내가 선택할 수 있는 최선의 방법 탐색
+3. 내가 선택할 수 있는 최선의 방법 탐색
+ -모양이 같은 걸 찾는다. 
  (1)k가 이
+ 
 	 * */
 	
 	
