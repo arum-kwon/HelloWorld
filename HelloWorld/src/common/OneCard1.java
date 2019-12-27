@@ -135,7 +135,7 @@ public class OneCard1 {
 		System.out.println();
 
 		System.out.print("      ");
-		if(openCardP==0) { System.out.print("#");
+		if(openCardP==0) {System.out.print("#");
 		}else { System.out.print("@"); }
 		if(openCardN<9) {System.out.print(openCardN+1);
 		}else if(openCardN==9) { System.out.print("J"); 
@@ -158,12 +158,26 @@ public class OneCard1 {
 			}
 		}
 		System.out.println();
-	}
 	
 	
-	//4. 턴 시작 (순서 p1 -> p2)
-	//openCard와 같은 p|n이 존재하면, 해당 값을 중앙에 보냄. 해당 card[1][p][n]=false, card[0][p][n]=true, openCardP/N = p/n
-	
+		//4. 턴 시작 (순서 p1 -> p2)
+		//openCard와 같은 p|n이 존재하면, 해당 card[1][p][n]=false, card[0][p][n]=true, openCardP/N = p/n
+		for(int n=0; n<nums ; n++) { //같은 p중에 탐색
+			if(card[1][openCardP][n]) {
+				card[1][openCardP][n]=false;
+				card[0][openCardP][n]=true;
+				openCardN=n;
+				break;
+			}
+		}
+			
+		for(int pat=0 ; pat<pats ; pat++) {
+			for(int n=0; n<nums ; n++) {
+				if(card[1][pat][n]){
+					
+				}
+			}
+		}
 	
 	/*             존재하지 않으면, 중앙에게 배정된 패 중에 임의로 1개 선택해서 가져온다,  card[1][P][N]=true, card[0][P][N]=false
 	 * 		while(true) {
@@ -192,6 +206,6 @@ public class OneCard1 {
 	
 	
 	
+	} //main 닫는 문~
 	
-	
-}
+}//클래스 닫는 문~~

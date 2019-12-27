@@ -8,9 +8,13 @@ public class BankApplication {
 	static Account[] accountAry = new Account[10];
 	
 	public static void main(String[] args) {
+		execute();
+	}
+	
+	public static void execute() {
+		
 		int menu = 0;
 		boolean run = true;
-		
 		
 		while(run) {
 
@@ -35,44 +39,38 @@ public class BankApplication {
 		}	
 	}
 	
-	
 	public static void createAccount() {
 		System.out.println("---------------------");
 		System.out.println("                계좌생성");
 		System.out.println("---------------------");
 
-		Account ac = new Account();
 		
 		System.out.print("계좌번호(4자) : ");
 		String acID = sc.nextLine();
-		if(acID.length()==4) { // 4자리 검사
-			for(Account a : accountAry) { //계좌번호 중복 검사
-				if(a != null &&	acID.equals(a.getAccoutID())) {
-					System.out.println("사용할 수 없는 번호입니다.");
-					return;
-				}
-			}
-			ac.setAccoutID(acID);
-		}else {
+		if(acID.length()!=4) { // 4자리 검사
 			System.out.println("계좌번호는 4자리입니다.");
+			return;
+		}
+		Account ac = findAccount(acID); //중복 검사
+		if(ac != null) {
+			System.out.println("사용할 수 없는 번호입니다.");
 			return;
 		}
 		System.out.print("계좌주 : ");
 		String acOwn = sc.nextLine();
-		ac.setOwnerName(acOwn);;
 		System.out.print("초기입금액 : ");
 		int balance = sc.nextInt();
 		sc.nextLine();
-		ac.setBalance(balance);;
 
-		for(int i=0 ; i<accountAry.length ; i++) {
+		ac = new Account(acID, acOwn,balance);
+		for(int i=0 ; i<accountAry.length ; i++) { 
 			if(accountAry[i] == null) { //빈 배열에 계좌 저장
 				accountAry[i]=ac;
 				System.out.println("-생성 완료-");
 				break;
 			}
 		}
-//		for(Account a : accountAry) {
+//		for(Account a : accountAry) { 값을 읽는 것은 가능하나, 넣을 땐 인덱스를 참조 못한다고 한다.
 //			System.out.println(a);
 ////			if(a == null) {
 ////				a=ac;
@@ -100,20 +98,23 @@ public class BankApplication {
 		System.out.print("계좌번호(4자) : ");
 		String acID = sc.nextLine();
 		if(acID.length()==4) {
-			for(Account a : accountAry) {
-				if(a != null &&	acID.equals(a.getAccoutID())) { //계좌번호 검색
+			Account ac = findAccount(acID);
+			if(ac == null) {
+				System.out.println("계좌번호를 다시 입력해주십시오."); //없는 계좌번호
+			}else {
+				try {
 					System.out.print("예금액(숫자) : ");
 					int inputMoney = sc.nextInt();
 					sc.nextLine();
-					a.setBalance(inputMoney);
+					ac.setBalance(inputMoney);
 					System.out.println("-예금 종료-");
-					return;
+				}catch(Exception e) {
+					System.out.println("숫자만 입력하세요. ");
+					sc.nextLine();
 				}
 			}
-			System.out.println("계좌번호를 다시 입력해주십시오."); //없는 계좌번호
 		}else {
 			System.out.println("계좌번호는 4자리입니다.");
-			return;
 		}
 		
 	}
@@ -124,20 +125,34 @@ public class BankApplication {
 		System.out.print("계좌번호(4자) : ");
 		String acID = sc.nextLine();
 		if(acID.length()==4) {
-			for(Account a : accountAry) {
-				if(a != null &&	acID.equals(a.getAccoutID())) { //계좌번호 검색
+			Account ac = findAccount(acID);
+			if(ac == null) {
+				System.out.println("계좌번호를 다시 입력해주십시오."); //없는 계좌번호
+			}else {
+				try {
 					System.out.print("출금액(숫자) : ");
-					int inputMoney = sc.nextInt();
+					int inputMoney = sc.nextInt(); 
 					sc.nextLine();
-					a.setBalance(-1*inputMoney); //출금이라서 -1 곱해서 마이너스로 저장
+					ac.setBalance(-1*inputMoney); //출금이라서 -1 곱해서 마이너스로 저장
 					System.out.println("-출금 종료-");
-					return;
+				}catch(Exception e) {
+					System.out.println("숫자만 입력하세요. ");
+					sc.nextLine();
 				}
 			}
-			System.out.println("계좌번호를 다시 입력해주십시오."); //없는 계좌번호
 		}else {
 			System.out.println("계좌번호는 4자리입니다.");
-			return;
 		}
+	}
+	
+	public static Account findAccount(String ac) {
+		Account acnt = null;
+		for(Account a : accountAry) {
+			if(a != null && ac.equals(a.getAccoutID())) {
+				acnt = a;
+				break;
+			}
+		}
+		return acnt;
 	}
 }
