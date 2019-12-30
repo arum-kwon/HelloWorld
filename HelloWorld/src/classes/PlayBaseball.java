@@ -12,15 +12,16 @@ public class PlayBaseball {
 	public static void main(String[] args) {
 		
 		System.out.println("Play Baseball!!");
+		setintAry();
 		
 		do {
-			printNum(intAry);
-			System.out.print(" / ");
-			printNum(inputAry);
-			setintAry();
 			setinputAry();
 		}while(checkNum()!=indexMax);
 
+		System.out.print("정답 : ");
+		printNum(intAry);
+		System.out.print(" / ");
+		printNum(inputAry);
 	}
 	
 	public static int checkNum() {
@@ -44,6 +45,7 @@ public class PlayBaseball {
 		for(int i=0; i<indexMax ; i++) {
 			System.out.print((i+1) + "번: ");
 			int input = sc.nextInt();
+			sc.nextLine();
 			inputAry[i] = input;
 		}
 	}

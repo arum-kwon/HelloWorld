@@ -1,5 +1,7 @@
 package referencetype;
 
+import classes.Friend;
+
 public class ArrayExample {
 	public static void main(String[] args) {
 		int[] intAry = {1,2,3,4,5};
@@ -70,8 +72,6 @@ public class ArrayExample {
 		sum = sum + num[4];
 		sum = sum + num[5];
 		sum = sum + num[6];
-		
-		
 		
 		
 		
