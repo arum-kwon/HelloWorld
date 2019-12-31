@@ -137,7 +137,8 @@ public class AddressBook {
 	}
 
 	public static void printInfo(Friend f) {
-		if(f instanceof UnivFriend) {
+		//System.out.println(f);
+		if(f instanceof UnivFriend) { //형변환
 			System.out.println((UnivFriend)f);
 		}else if(f instanceof ComFriend) {
 			System.out.println((ComFriend)f);

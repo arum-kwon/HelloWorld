@@ -4,6 +4,10 @@ public class Friend {
 	private String name;
 	private String phone;
 	
+	public Friend() {
+		super();
+	}
+
 	public Friend(String name, String phone) {
 		super();
 		this.name = name;

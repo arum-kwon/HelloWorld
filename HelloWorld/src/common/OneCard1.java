@@ -170,8 +170,16 @@ public class OneCard1 {
 				break;
 			}
 		}
-			
-		for(int pat=0 ; pat<pats ; pat++) {
+		for(int pat=0; pat<pats ; pat++) { //같은 n중에 탐색
+			if(card[1][pat][openCardN]) {
+				card[1][pat][openCardN]=false;
+				card[0][pat][openCardN]=true;
+				openCardP=pat;
+				break;
+			}
+		}	
+		
+		for(int pat=0 ; pat<pats ; pat++) { 
 			for(int n=0; n<nums ; n++) {
 				if(card[1][pat][n]){
 					
