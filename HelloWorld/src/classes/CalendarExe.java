@@ -5,21 +5,22 @@ public class CalendarExe {
 //		createCal(9);
 //	}
 	public void createCal(int month) {
+		System.out.println("============["+ month +"월]============");
 		String[] weeks = {"Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat"};
+		int firstWeek = getFirstDayofMonth(month);
 		for(int i=0 ; i<7 ; i++) {
 			System.out.print(" " + weeks[i]);
 		}
 		System.out.println();
 		System.out.println("==============================");
-		
+		for(int i=0; i<firstWeek ; i++) {
+			System.out.print("    ");
+		}
 		for(int i=1 ; i<=getMaxDate(month) ; i++) {
 			System.out.printf("%4d", i);
-			if (i%7==0) {
+			if ((firstWeek+i)%7==0) {
 				System.out.println();
 			}
-		}
-		for(int i=1; i<=12 ; i++) {
-			System.out.println(i + "달 첫번째 요일 일~토(0~6) : " + getFirstDayofMonth(i));
 		}
 	}
 	

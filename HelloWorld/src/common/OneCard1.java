@@ -162,30 +162,26 @@ public class OneCard1 {
 	
 		//4. 턴 시작 (순서 p1 -> p2)
 		//openCard와 같은 p|n이 존재하면, 해당 card[1][p][n]=false, card[0][p][n]=true, openCardP/N = p/n
-		for(int n=0; n<nums ; n++) { //같은 p중에 탐색
-			if(card[1][openCardP][n]) {
-				card[1][openCardP][n]=false;
-				card[0][openCardP][n]=true;
-				openCardN=n;
-				break;
-			}
-		}
-		for(int pat=0; pat<pats ; pat++) { //같은 n중에 탐색
-			if(card[1][pat][openCardN]) {
-				card[1][pat][openCardN]=false;
-				card[0][pat][openCardN]=true;
-				openCardP=pat;
-				break;
-			}
-		}	
-		
-		for(int pat=0 ; pat<pats ; pat++) { 
-			for(int n=0; n<nums ; n++) {
-				if(card[1][pat][n]){
-					
+		boolean oracle
+		= false;
+		out : while (true) {
+			for(int n=0; n<nums ; n++) { //같은 p중에 탐색
+				if(card[1][openCardP][n]) {
+					card[1][openCardP][n]=false;
+					card[0][openCardP][n]=true;
+					openCardN=n;
+					break out;
 				}
 			}
-		}
+			for(int pat=0; pat<pats ; pat++) { //같은 n중에 탐색
+				if(card[1][pat][openCardN]) {
+					card[1][pat][openCardN]=false;
+					card[0][pat][openCardN]=true;
+					openCardP=pat;
+					break out;
+				}
+			}
+		}	
 	
 	/*             존재하지 않으면, 중앙에게 배정된 패 중에 임의로 1개 선택해서 가져온다,  card[1][P][N]=true, card[0][P][N]=false
 	 * 		while(true) {

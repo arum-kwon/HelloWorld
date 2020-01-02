@@ -16,7 +16,7 @@ public class CalendarExe {
 //		System.out.println(cal.get(Calendar.DAY_OF_MONTH));
 //		System.out.println(cal.getActualMaximum(Calendar.DAY_OF_MONTH));
 //		System.out.println(cal.get(Calendar.DAY_OF_WEEK));
-		createCal(2019, 5);
+		createCal(2019, 12);
 	}
 	
 	public static void createCal(int year, int month) {

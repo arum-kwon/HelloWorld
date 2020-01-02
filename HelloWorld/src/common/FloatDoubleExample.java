@@ -5,13 +5,13 @@ public class FloatDoubleExample {
 		double var1 = 3.14;
 //		float var2 = 3.14;
 		float var3 = 3.14f;
-		double var4 = 0.123456789;
+		double var4 = 154/(double)3;
 		float var5 = 0.123456789f;
 		
 		System.out.println("v1 " + var1);
 //		System.out.println("v2 " + var2);
 		System.out.println("v3 " + var3);
-		System.out.println("v4 " + var4);
+		System.out.printf("평균점수 : %.1f\n",var4);
 		System.out.println("v5 " + var5);
 		
 		int var6 = 3000000;
